@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    ports: 
+      - 5000:5000
+    depends_on: 
+      - db
+    environment: 
+      SECRET_KEY: "not_so_secret"
+      POSTGRES_PASSWORD: "not_default_password"
+      POSTGRES_USER: "base_user"
+      POSTGRES_DB: "database"
+      USE_POSTGRES: 1
+  db:
+    image: postgres
+    environment: 
+      SECRET_KEY: "not_so_secret"
+      POSTGRES_PASSWORD: "not_default_password"
+      POSTGRES_USER: "base_user"
+      POSTGRES_DB: "database"
